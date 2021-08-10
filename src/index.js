@@ -5,7 +5,4 @@ import App from './App';
 
 const rootElement = document.querySelector('#root');
 
-const users = 
-
-
 ReactDOM.render(<App />, rootElement);
