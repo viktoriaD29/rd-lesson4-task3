@@ -1,4 +1,4 @@
-import { GONEXT, GOPREV } from './users.action.js';
+import { GONEXT, GOPREV } from './users.actions.js';
 
 const initialState = {
   usersList: [

@@ -1,7 +1,7 @@
 import React from 'react';
 import Pagination from './Pagination.jsx';
 import User from './User.jsx';
-import * as userActions from './users.action.js';
+import * as userActions from './users.actions.js';
 import { connect } from 'react-redux';
 
 class UsersList extends React.Component {
@@ -14,10 +14,12 @@ class UsersList extends React.Component {
   };
 
   render() {
-    const usersPerPage = 3;
+    console.log(this.props);
+
+    const itemsPerPage = 3;
     const { currentPage, usersList } = this.props.users;
-    const startIndex = currentPage * usersPerPage;
-    const endIndex = startIndex + usersPerPage;
+    const startIndex = currentPage * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
     const usersToDisplay = usersList.slice(startIndex, endIndex);
 
     return (
@@ -27,7 +29,7 @@ class UsersList extends React.Component {
           goPrev={this.goPrev}
           goNext={this.goNext}
           totalItems={usersList.length}
-          itemsPerPage={usersPerPage}
+          itemsPerPage={itemsPerPage}
         />
         <ul className="users">
           {usersToDisplay.map((user) => (
