@@ -5,13 +5,13 @@ const Pagination = ({
   goNext,
   currentPage,
   totalItems,
-  itemsPerPage,
+  usersPerPage,
 }) => {
 
   const isPrevPageAvailable = currentPage > 0;
 
   const isNextPageAvailable =
-    currentPage + 1 < Math.ceil(totalItems / itemsPerPage);
+    currentPage + 1 < Math.ceil(totalItems / usersPerPage);
 
   return (
     <div className="pagination">

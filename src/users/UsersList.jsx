@@ -14,12 +14,10 @@ class UsersList extends React.Component {
   };
 
   render() {
-    console.log(this.props);
-
-    const itemsPerPage = 3;
+    const usersPerPage = 3;
     const { currentPage, usersList } = this.props.users;
-    const startIndex = currentPage * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
+    const startIndex = currentPage * usersPerPage;
+    const endIndex = startIndex + usersPerPage;
     const usersToDisplay = usersList.slice(startIndex, endIndex);
 
     return (
@@ -29,7 +27,7 @@ class UsersList extends React.Component {
           goPrev={this.goPrev}
           goNext={this.goNext}
           totalItems={usersList.length}
-          itemsPerPage={itemsPerPage}
+          itemsPerPage={usersPerPage}
         />
         <ul className="users">
           {usersToDisplay.map((user) => (
