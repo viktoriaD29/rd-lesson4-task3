@@ -1,11 +1,11 @@
-export const GONEXT = 'USERS/GONEXT'
-export const GOPREV = 'USERS/GOPREV';
+export const GONEXT = 'USERSLIST/GONEXT';
+export const GOPREV = 'USERSLIST/GOPREV';
 
 export const goNext = () => {
   return {
     type: GONEXT,
   };
-}
+};
 
 export const goPrev = () => {
   return {

@@ -1,12 +1,12 @@
 import React from 'react';
 import Pagination from './Pagination.jsx';
 import User from './User.jsx';
+import * as userActions from './users.action.js';
 import { connect } from 'react-redux';
-import * as userActions from './user.action';
 
 class UsersList extends React.Component {
   goNext = () => {
-    this.props.goNext()
+    this.props.goNext();
   };
 
   goPrev = () => {
@@ -15,13 +15,10 @@ class UsersList extends React.Component {
 
   render() {
     const usersPerPage = 3;
-    const { currentPage, userList } = this.props.users;
-    console.log(this.props.users);
-    console.log(userList);
-
+    const { currentPage, usersList } = this.props.users;
     const startIndex = currentPage * usersPerPage;
     const endIndex = startIndex + usersPerPage;
-    const usersToDisplay = userList.slice(startIndex, endIndex);
+    const usersToDisplay = usersList.slice(startIndex, endIndex);
 
     return (
       <div>
@@ -29,12 +26,12 @@ class UsersList extends React.Component {
           currentPage={currentPage}
           goPrev={this.goPrev}
           goNext={this.goNext}
-          totalItems={userList.length}
+          totalItems={usersList.length}
           itemsPerPage={usersPerPage}
         />
         <ul className="users">
-          {usersToDisplay.map(({ id, name, age }) => (
-            <User key={id} name={name} age={age} />
+          {usersToDisplay.map((user) => (
+            <User key={user.id} name={user.name} age={user.age} />
           ))}
         </ul>
       </div>
@@ -45,7 +42,7 @@ class UsersList extends React.Component {
 const mapState = (state) => {
   return {
     users: {
-      userList: state.users.userList,
+      usersList: state.users.usersList,
       currentPage: state.users.currentPage,
     },
   };
